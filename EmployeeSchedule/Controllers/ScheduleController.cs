@@ -35,19 +35,19 @@ namespace EmployeeSchedule.Controllers
         }
 
         [HttpPut]
-        [Route("{id}")]
-        public async Task<IActionResult> CreateOtherDates([FromRoute] int id, [FromBody] UpdateScheduleRequestDto updateScheduleRequestDto)
+        [Route("{ids}")]
+        public async Task<IActionResult> CreateOtherDates([FromRoute] List<int> ids, [FromBody] List<UpdateScheduleRequestDto> updateScheduleRequestDto)
         {
-            var scheduleDomainModel = mapper.Map<Schedule>(updateScheduleRequestDto);
+            var scheduleDomainModel = mapper.Map<List<Schedule>>(updateScheduleRequestDto);
 
-            scheduleDomainModel = await scheduleRepository.UpdateDateAsync(id, scheduleDomainModel);
+            var updatedSchedules = await scheduleRepository.UpdateDateAsync(ids, scheduleDomainModel);
 
-            if (scheduleDomainModel == null) 
+            if (updatedSchedules == null) 
             {
                 return NotFound();
             }
 
-            var scheduelDto = mapper.Map<ScheduleDto>(scheduleDomainModel);
+            var scheduelDto = mapper.Map<ScheduleDto>(updatedSchedules);
 
             return Ok(scheduelDto);
 
@@ -71,9 +71,9 @@ namespace EmployeeSchedule.Controllers
 
         [HttpGet]
         [Route("all/{userId}")]
-        public async Task<IActionResult> GetUserRecords([FromRoute] int userId, int mouth)
+        public async Task<IActionResult> GetUserRecords([FromRoute] int userId)
         {
-            var scheduleDomainModel = await scheduleRepository.GetByUserId(userId,mouth);
+            var scheduleDomainModel = await scheduleRepository.GetByUserId(userId);
 
             if(scheduleDomainModel == null)
             {
@@ -84,10 +84,10 @@ namespace EmployeeSchedule.Controllers
 
             
             var groupedScheduleDtoModel = scheduleDtoModel
-                .GroupBy(s => s.TimeDay)
+                .GroupBy(s => s.DateCheck.Date)
                 .Select(g => new
                 {
-                    TimeDay = g.Key,
+                    Date = g.Key,
                     ScheduleDtoFormated = g.ToList()
                 }).ToList();
 
@@ -95,20 +95,6 @@ namespace EmployeeSchedule.Controllers
 
         }
 
-        //[HttpGet]
-        //public IActionResult Teste(DateTime date)
-        //{
-        //    date com espaco sem o T
-
-        //    date = DateTime.UtcNow;
-        //    var d = date.AddHours(-3).ToString("dd/MM/yyyy HH:mm");
-        //    var d2 = date.ToString("dd/MM/yyyy");
-
-        //    var date2 = DateTime.UtcNow.ToString(CultureInfo.CreateSpecificCulture("pt-BR"));
-        //    //if (date2.Contains(d2))
-        //    //    return NotFound();
-
-        //    return Ok($"{date:g}");
-        //}
+        
     }
 }

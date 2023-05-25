@@ -25,9 +25,9 @@ namespace EmployeeSchedule.Mapping
 
             //CreateMap<Schedule, ScheduleDtoFormated>()
             //    .ForMember(dc => dc.DateCheck, m => m.MapFrom(a => a.DateCheck.ToString("HH:mm")));
-            CreateMap<Schedule, ScheduleDtoFormated>()
+            CreateMap<Schedule, ScheduleDtoFormated>();
             //.ForMember(dc => dc.TimeCheck, m => m.MapFrom(a => a.DateCheck.TimeOfDay))
-            .ForMember(dc => dc.TimeDay, m => m.MapFrom(a => a.DateCheck.Day)); 
+            
 
         }
 

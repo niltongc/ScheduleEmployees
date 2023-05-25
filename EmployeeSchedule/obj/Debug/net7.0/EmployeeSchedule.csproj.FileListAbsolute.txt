@@ -76,3 +76,6 @@ C:\Users\xjuni\Documents\Pepper\EmployeeSchedule\Schedule\EmployeeSchedule\obj\D
 C:\Users\xjuni\Documents\Pepper\EmployeeSchedule\Schedule\EmployeeSchedule\obj\Debug\net7.0\ref\EmployeeSchedule.dll
 C:\Users\xjuni\Documents\Pepper\EmployeeSchedule\Schedule\EmployeeSchedule\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\xjuni\Documents\Pepper\EmployeeSchedule\Schedule\EmployeeSchedule\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\xjuni\Documents\Pepper\EmployeeSchedule\Schedule\EmployeeSchedule\bin\Debug\net7.0\FluentValidation.dll
+C:\Users\xjuni\Documents\Pepper\EmployeeSchedule\Schedule\EmployeeSchedule\bin\Debug\net7.0\FluentValidation.AspNetCore.dll
+C:\Users\xjuni\Documents\Pepper\EmployeeSchedule\Schedule\EmployeeSchedule\bin\Debug\net7.0\FluentValidation.DependencyInjectionExtensions.dll

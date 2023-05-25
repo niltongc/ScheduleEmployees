@@ -5,8 +5,8 @@ namespace EmployeeSchedule.Repositories
     public interface IScheduleRepository
     {
         Task<Schedule> CreateDateAsync(Schedule schedule);
-        Task<Schedule?> UpdateDateAsync(int Id, Schedule schedule);
+        Task<List<Schedule?>> UpdateDateAsync(List<int> Ids, List<Schedule> schedule);
         Task<Schedule> GetById(int id);
-        Task<List<Schedule>> GetByUserId(int userId, int mouth);
+        Task<List<Schedule>> GetByUserId(int userId);
     }
 }

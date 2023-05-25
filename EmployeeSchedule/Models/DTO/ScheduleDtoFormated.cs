@@ -2,11 +2,9 @@
 {
     public class ScheduleDtoFormated
     {
-       
-        public int TimeDay { get; set; } 
-        //public TimeSpan TimeCheck { get; set; }
+        public int Id { get; set; }
         public DateTime DateCheck { get; set; }
-        public bool IsLogin { get; set; }
+        
 
     }
 }

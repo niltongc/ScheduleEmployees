@@ -6,7 +6,6 @@ namespace EmployeeSchedule.Models.DTO
     {
 
         public DateTime DateCheck { get; set; } = DateTime.UtcNow;
-        public bool IsLogin { get; set; }
         public int UserId { get; set; }
        
     }

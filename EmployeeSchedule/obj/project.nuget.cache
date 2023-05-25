@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "tiaxgIIXfCC7i5DgHWFeI2IqBQkPRyz2N/5Q0+4Ts7g7GbaO4IgvuXjGakwF/5euvmQnWMhdzf7TeH5ZmqK/sQ==",
+  "dgSpecHash": "37d8kRY2jqnM8H9DHIJncWiIYGENQjTaxospC3GJG9rE7Z4sMKqZH5rMc17ys9fiuQ689sKNg6eU/mV1h/HG5Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\xjuni\\Documents\\Pepper\\EmployeeSchedule\\Schedule\\EmployeeSchedule\\EmployeeSchedule.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,9 @@
     "C:\\Users\\xjuni\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\xjuni\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\xjuni\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\xjuni\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
+    "C:\\Users\\xjuni\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\xjuni\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "C:\\Users\\xjuni\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\xjuni\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.3\\microsoft.aspnetcore.openapi.7.0.3.nupkg.sha512",
     "C:\\Users\\xjuni\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

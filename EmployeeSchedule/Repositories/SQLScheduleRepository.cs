@@ -39,31 +39,40 @@ namespace EmployeeSchedule.Repositories
             return daySchedule;
         }
 
-        public async Task<List<Schedule>> GetByUserId(int userId, int mouth)
+        public async Task<List<Schedule>> GetByUserId(int userId)
         {
             var schedulesByMouth = await dbContext.Schedules
-                .Where(x => x.UserId == userId && x.DateCheck.Month == mouth)
+                .Where(x => x.UserId == userId && x.DateCheck.Month == DateTime.UtcNow.Month)
                 .ToListAsync();
 
             return schedulesByMouth;
         }
 
+        //public async Task<List<Schedule>> GetByUserId(int userId, int mouth)
+        //{
+        //    var schedulesByMouth = await dbContext.Schedules
+        //        .Where(x => x.UserId == userId && x.DateCheck.Month == mouth)
+        //        .ToListAsync();
 
-        public async Task<Schedule?> UpdateDateAsync(int Id, Schedule schedule)
+        //    return schedulesByMouth;
+        //}
+
+
+        public async Task<List<Schedule?>> UpdateDateAsync(List<int> Ids, List<Schedule> schedule)
         {
-            var existingSchedule = await dbContext.Schedules.FirstOrDefaultAsync(x => x.Id == Id);
+            var existingSchedule = await dbContext.Schedules.Where(x => Ids.Contains(x.Id)).ToListAsync();
 
 
-            if (existingSchedule == null)
+            if (existingSchedule.Count == 0)
             {
                 return null;
             }
 
+            for (int i = 0; i < existingSchedule.Count; i++)
+            {
+                existingSchedule[i].DateCheck = schedule[i].DateCheck;
             
-            
-            existingSchedule.DateCheck = schedule.DateCheck;
-
-           
+            }
 
 
             await dbContext.SaveChangesAsync();
@@ -71,6 +80,6 @@ namespace EmployeeSchedule.Repositories
             return existingSchedule;
         }
 
-
+       
     }
 }
