@@ -34,7 +34,6 @@ namespace EmployeeSchedule.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DateCheck = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsLogin = table.Column<bool>(type: "bit", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

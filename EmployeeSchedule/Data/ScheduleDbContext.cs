@@ -12,5 +12,14 @@ namespace EmployeeSchedule.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>()
+                .HasIndex(x => x.Email)
+                .IsUnique();
+        }
     }
 }

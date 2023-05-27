@@ -25,7 +25,12 @@ namespace EmployeeSchedule.Controllers
         {
             var userDomainModel = mapper.Map<User>(addUserRequestDto);
 
-            await userRepository.CreateAsync(userDomainModel);
+            userDomainModel = await userRepository.CreateAsync(userDomainModel);
+
+            if (userDomainModel == null) 
+            {
+                return BadRequest("Email is already used");
+            }
 
             var userDtoModel = mapper.Map<UserDto>(userDomainModel);
 
@@ -72,6 +77,22 @@ namespace EmployeeSchedule.Controllers
             }
 
             var userDto = mapper.Map<UserDto>(userDomainModel);
+
+            return Ok(userDto);
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] int id)
+        {
+            var userDomainModel = await userRepository.DeleteUserAsync(id);
+
+            if (userDomainModel == null)
+            {
+                return NotFound();
+            }
+
+            var userDto = mapper.Map<UserDto> (userDomainModel);
 
             return Ok(userDto);
         }

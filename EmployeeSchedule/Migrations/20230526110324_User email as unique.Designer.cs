@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeeSchedule.Migrations
 {
     [DbContext(typeof(ScheduleDbContext))]
-    [Migration("20230522185224_TableWithoutIslogin")]
-    partial class TableWithoutIslogin
+    [Migration("20230526110324_User email as unique")]
+    partial class Useremailasunique
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,7 +56,7 @@ namespace EmployeeSchedule.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -71,6 +71,9 @@ namespace EmployeeSchedule.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("Users");
                 });

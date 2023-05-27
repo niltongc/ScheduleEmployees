@@ -1,5 +1,6 @@
 ﻿using EmployeeSchedule.Data;
 using EmployeeSchedule.Models.Domain;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeSchedule.Repositories
@@ -15,10 +16,21 @@ namespace EmployeeSchedule.Repositories
 
         public async Task<User> CreateAsync(User user)
         {
-            await dbContext.Users.AddAsync(user);
-            await dbContext.SaveChangesAsync();
+            var existingEmail = await dbContext.Users.FirstOrDefaultAsync(x => x.Email == user.Email);
 
-            return user;
+            if (existingEmail != null)
+            {
+                return null;
+            }
+            else
+            {
+                await dbContext.Users.AddAsync(user);
+                await dbContext.SaveChangesAsync();
+
+                return user;
+            }
+
+            
         }
 
         public async Task<List<User>> GetAllAsync() => 
@@ -42,6 +54,22 @@ namespace EmployeeSchedule.Repositories
             existingUser.Email = user.Email;
             existingUser.Password = user.Password;
 
+            await dbContext.SaveChangesAsync();
+
+            return existingUser;
+        }
+
+        public async Task<User> DeleteUserAsync(int id)
+        {
+            var existingUser = await dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (existingUser == null) 
+            {
+                return null;
+
+            }
+
+            dbContext.Users.Remove(existingUser);
             await dbContext.SaveChangesAsync();
 
             return existingUser;

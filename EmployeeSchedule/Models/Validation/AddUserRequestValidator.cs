@@ -1,5 +1,6 @@
 ﻿using EmployeeSchedule.Models.DTO;
 using FluentValidation;
+using System.Data;
 using System.Net;
 
 namespace EmployeeSchedule.Models.Validation
@@ -14,7 +15,9 @@ namespace EmployeeSchedule.Models.Validation
                 .Length(3,100)
                 .WithMessage("'Name' can not be empty and must have range 3 to 100 chars");
             RuleFor(u => u.Email)
-            .EmailAddress()
+                .NotEmpty()
+                .NotNull()
+                .EmailAddress()
                 .WithMessage("‘Email’ is not a valid email address");
             RuleFor(u => u.Password)
                 .NotEmpty()

@@ -8,5 +8,6 @@ namespace EmployeeSchedule.Repositories
         Task<User?> GetByEmailAsync(string user);
         Task<List<User>> GetAllAsync();
         Task<User?> UpdateUserAsync(string email,User user);
+        Task<User?> DeleteUserAsync(int id);
     }
 }
